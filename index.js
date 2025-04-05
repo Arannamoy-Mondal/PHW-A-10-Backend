@@ -37,7 +37,7 @@ async function run() {
             const result = await campaign.findOne(query,{});
             res.send(result)
         })
-        
+
         app.get("/campaign", async (req, res) => {
             const cursor = campaign.find()
             const data = cursor.toArray()
@@ -75,5 +75,5 @@ run().catch(console.dir);
 
 console.log(process.env.DB_USER)
 app.get("/", (req, res) => res.send("hello"))
-app.listen(3000, () => console.log("hello"))
-// export default app;
+// app.listen(3000, () => console.log("hello"))
+export default app;
