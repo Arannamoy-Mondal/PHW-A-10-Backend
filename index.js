@@ -93,8 +93,9 @@ async function run() {
 
         app.get("/campaign/email/:email", async (req, res) => {
             const email = req.params.email;
-            const query = { email: email };
+            const query = { organizerEmail: email };
             const result = await campaign.find(query, {}).toArray();
+            console.log(result)
             res.send(result)
         })
 
@@ -133,5 +134,5 @@ async function run() {
 
 run().catch(console.dir);
 
-app.listen(3000, () => console.log("hello"))
+app.listen(3000, () => console.log("running port is "+3000))
 // export default app;
