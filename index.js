@@ -32,8 +32,8 @@ async function run() {
             res.send(result)
         })
 
-        app.get("/user",async(req,res)=>{
-            const data=await user.find().toArray() 
+        app.get("/user", async (req, res) => {
+            const data = await user.find().toArray()
             res.send(data)
         })
         app.get("/user/email/:email", async (req, res) => {
@@ -62,7 +62,7 @@ async function run() {
 
         app.get("/campaign", async (req, res) => {
             const cursor = campaign.find()
-            const data =await cursor.toArray()
+            const data = await cursor.toArray()
             res.send(data)
         })
 
@@ -106,14 +106,20 @@ async function run() {
             res.send(result)
         })
 
+        app.delete("/campaign/id/:id", async (req, res) => {
+            const query = { _id: new ObjectId(req.params.id) };
+            const result = await campaign.deleteOne(query);
+            res.send(result)
+        })
+
         app.post("/donation", async (req, res) => {
             const result = await donation.insertOne(req.body);
             res.send(result)
         })
 
         app.get("/donation", async (req, res) => {
-            const cursor =donation.find()
-            const data =await cursor.toArray()
+            const cursor = donation.find()
+            const data = await cursor.toArray()
             console.log(data)
             res.send(data)
         })
@@ -134,5 +140,5 @@ async function run() {
 
 run().catch(console.dir);
 
-app.listen(3000, () => console.log("running port is "+3000))
+app.listen(3000, () => console.log("running port is " + 3000))
 // export default app;
