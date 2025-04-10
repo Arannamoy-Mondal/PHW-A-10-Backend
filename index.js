@@ -40,8 +40,9 @@ async function run() {
             const email = req.params.email;
             const query = { email: email };
             const result = await user.findOne(query, {});
+            console.log(result)
             if(result)res.send(result)
-            else res.send(false)
+            else res.send({"isExist":false})
         })
 
         app.patch("/user/email/:email", async (req, res) => {
