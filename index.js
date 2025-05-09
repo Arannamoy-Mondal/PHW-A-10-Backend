@@ -127,8 +127,11 @@ async function run() {
         })
         app.get("/donation/email/:email", async (req, res) => {
             const email = req.params.email;
-            const query = { email: email };
+            console.log(email)
+            const query = { dEmail: email };
+            console.log(query)
             const result = await donation.find(query, {}).toArray();
+            console.log(result)
             res.send(result)
         })
         // Send a ping to confirm a successful connection
